@@ -9,30 +9,30 @@ import Header from './components/Header'
 import Error from './components/Error'
 import Results from './pages/Results'
 import Freelances from './pages/Freelances'
-// eslint-disable-next-line no-unused-vars
-import styled, { createGlobalStyle } from 'styled-components'
-
-const GlobalStyle = createGlobalStyle`
-  div {
-    font-family: 'Trebuchet MS', Helvetica, sans-serif;
-  }
-`
+import { SurveyProvider, ThemeProvider } from './utils/context'
+import Footer from './components/Footer'
+import GlobalStyle from './utils/style/GlobalStyle'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <React.StrictMode>
-    <Router>
-      <GlobalStyle/>
-      <Header/>
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/survey/:questionNumber' element={<Survey/>}/>
-        <Route path='*' element={<Error/>}/>
-        <Route path='/results' element={<Results/>}/>
-        <Route path='/freelances' element={<Freelances/>}/>
-      </Routes>
-    </Router>
-  </React.StrictMode>
+    <React.StrictMode>
+        <Router>
+            <ThemeProvider>
+            <SurveyProvider>
+            <GlobalStyle />
+            <Header />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/survey/:questionNumber" element={<Survey />} />
+                <Route path="*" element={<Error />} />
+                <Route path="/results" element={<Results />} />
+                <Route path="/freelances" element={<Freelances />} />
+            </Routes>
+            <Footer/>
+            </SurveyProvider>
+            </ThemeProvider>
+        </Router>
+    </React.StrictMode>
 )
 
 // If you want to start measuring performance in your app, pass a function

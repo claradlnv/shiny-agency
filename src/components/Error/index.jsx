@@ -3,12 +3,12 @@ import colors from '../../utils/style/colors'
 import error from '../../assets/404.svg'
 
 const Background = styled.div`
-  position: absolute;
-  width: 1313px;
-  height: 1256px;
-  left: 63px;
-  top: 189px;
-  background: ${colors.backgroundLight};
+    position: absolute;
+    width: 1313px;
+    height: 1256px;
+    left: 63px;
+    top: 189px;
+    background: ${colors.backgroundLight};
 `
 const ImageError = styled.img`
     position: absolute;
@@ -24,20 +24,18 @@ const TexteError = styled.span`
     line-height: 36px;
     text-align: center;
     position: relative;
-    color: #2F2E41;
+    color: #2f2e41;
     left: 425px;
-    top:99px;
-    
-
+    top: 99px;
 `
 function Error() {
     return (
         <Background>
             <TexteError>Oups...</TexteError>
-            <ImageError src={error} alt='Erreur' />
+            <ImageError src={error} alt="Erreur" />
             <TexteError>Il semblerait qu’il y ait un problème</TexteError>
         </Background>
     )
 }
- 
+
 export default Error

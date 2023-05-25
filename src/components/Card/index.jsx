@@ -43,7 +43,7 @@ function Card({ label, title, picture }) {
     return (
         <CardWrapper>
             <CardLabel>{label}</CardLabel>
-            <CardImage src={picture} alt="freelance" height={80} width={80} />
+            <CardImage src={picture} alt="freelance" />
             <CardTitle>{title}</CardTitle>
         </CardWrapper>
     )
@@ -58,7 +58,7 @@ Card.propTypes = {
 Card.defaultProps = {
     title: '',
     label: '',
-    picture: DefaultPicture
+    picture: DefaultPicture,
 }
- 
+
 export default Card
