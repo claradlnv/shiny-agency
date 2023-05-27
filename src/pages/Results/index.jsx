@@ -63,7 +63,7 @@ const LoaderWrapper = styled.div`
   justify-content: center;
 `
 
-function formatFetchParams(answers) {
+export function formatFetchParams(answers) {
   const answerNumbers = Object.keys(answers)
 
   return answerNumbers.reduce((previousParams, answerNumber, index) => {
@@ -71,6 +71,13 @@ function formatFetchParams(answers) {
     const separator = isFirstParam ? '' : '&'
     return `${previousParams}${separator}a${answerNumber}=${answers[answerNumber]}`
   }, '')
+}
+
+export function formatJobList(title, listLength, index) {
+  if (index === listLength - 1) {
+      return title
+  }
+  return `${title},`
 }
 
 function Results() {
@@ -83,7 +90,7 @@ function Results() {
 
     return isLoading ? (
             <LoaderWrapper>
-                <Loader />
+                <Loader data-testid='loader'/>
             </LoaderWrapper>
         ) : (
         <ResultsContainer theme={theme}>
@@ -99,7 +106,7 @@ function Results() {
             <div>
                 {resultsData && resultsData.map((result, index) => 
                     <DescriptionWrapper key={index}>
-                        <JobTitle theme={theme}> {result.title}</JobTitle>
+                        <JobTitle theme={theme}> {formatJobList(result.title, resultsData.length, index)}</JobTitle>
                         <JobDescription theme={theme}>{result.description}</JobDescription>
                     </DescriptionWrapper>
                 )}

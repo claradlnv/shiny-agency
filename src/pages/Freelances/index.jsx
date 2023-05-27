@@ -2,7 +2,7 @@ import Card from '../../components/Card'
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import { Loader } from '../../utils/Atoms'
-import { useFetch } from '../../utils/hooks'
+import { useFetch, useTheme } from '../../utils/hooks'
 
 /* const freelanceProfiles = [
     {
@@ -30,8 +30,7 @@ const CardsContainer = styled.div`
 
 const PageTitle = styled.h1`
     font-size: 30px;
-    color: black;
-    text-align: center;
+    color: ${({ theme }) => (theme === 'light' ? '#000000' : '#ffffff')};    text-align: center;
     padding-bottom: 30px;
 `
 
@@ -41,6 +40,7 @@ const PageSubtitle = styled.h2`
     font-weight: 300;
     text-align: center;
     padding-bottom: 30px;
+    color: ${({ theme }) => (theme === 'light' ? '#000000' : '#ffffff')};
 `
 
 const LoaderWrapper = styled.div`
@@ -49,6 +49,7 @@ const LoaderWrapper = styled.div`
 `
 
 function Freelances() {
+    const {theme}= useTheme()
     const { data, isLoading, error } = useFetch(`http://localhost:8000/freelances`)
     const { freelancersList } = data
 
@@ -72,13 +73,13 @@ function Freelances() {
 
     return (
         <div>
-            <PageTitle>Trouvez votre prestataire</PageTitle>
-            <PageSubtitle>
+            <PageTitle theme={theme}>Trouvez votre prestataire</PageTitle>
+            <PageSubtitle theme={theme}>
                 Chez Shiny nous réunissons les meilleurs profils pour vous.
             </PageSubtitle>
             {isLoading ? (
                 <LoaderWrapper>
-                    <Loader />
+                    <Loader data-testid="loader"/>
                 </LoaderWrapper>
             ) : (
                 <CardsContainer>

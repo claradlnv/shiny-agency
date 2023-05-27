@@ -56,7 +56,9 @@ const BoutonHome = styled(Link)`
         props.$isFullLink &&
         `color: white; border-radius: 30px; background-color: ${colors.primary};`}
 `
-function App() {
+
+export 
+function Home() {
     const {theme} = useTheme()
     
     return (
@@ -73,4 +75,4 @@ function App() {
     )
 }
 
-export default App
+export default Home
