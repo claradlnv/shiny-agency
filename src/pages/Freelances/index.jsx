@@ -89,6 +89,7 @@ function Freelances() {
                             label={profile.job}
                             picture={profile.picture}
                             title={profile.name}
+                            theme={theme}
                         />
                         )
                     }

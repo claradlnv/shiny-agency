@@ -5,6 +5,7 @@ import { Loader } from '../../utils/Atoms'
 import colors from '../../utils/style/colors'
 import { useFetch } from '../../utils/hooks'
 import { useTheme } from '../../utils/hooks'
+import EmptyList from '../../components/EmptyList'
 
 const ResultsContainer = styled.div`
   display: flex;
@@ -88,6 +89,13 @@ function Results() {
     const { data, isLoading, error } = useFetch(`http://localhost:8000/results/?${formatAnswers}`)
     const {resultsData} = data
 
+    if (error){
+      return <span>Il y a un problème</span>
+    }
+
+    if (resultsData?.length < 1){
+      return <EmptyList theme={theme}/>
+    }
     return isLoading ? (
             <LoaderWrapper>
                 <Loader data-testid='loader'/>

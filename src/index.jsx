@@ -18,18 +18,18 @@ root.render(
     <React.StrictMode>
         <Router>
             <ThemeProvider>
-            <SurveyProvider>
-            <GlobalStyle />
-            <Header />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/survey/:questionNumber" element={<Survey />} />
-                <Route path="*" element={<Error />} />
-                <Route path="/results" element={<Results />} />
-                <Route path="/freelances" element={<Freelances />} />
-            </Routes>
-            <Footer/>
-            </SurveyProvider>
+                <SurveyProvider>
+                    <GlobalStyle />
+                    <Header />
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/survey/:questionNumber" element={<Survey />} />
+                        <Route path="*" element={<Error />} />
+                        <Route path="/results" element={<Results />} />
+                        <Route path="/freelances" element={<Freelances />} />
+                    </Routes>
+                </SurveyProvider>
+                <Footer/>
             </ThemeProvider>
         </Router>
     </React.StrictMode>
